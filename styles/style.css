@@ -1,0 +1,7 @@
+html {
+  background: ghostwhite;
+}
+
+.container {
+  display: grid;
+}
