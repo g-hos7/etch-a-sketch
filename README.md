@@ -9,12 +9,12 @@ Etch-A-Sketch is a sketch pad style app inspired by the classic childrens toy of
 
 ## Author
 
-* **Tim Barnes** - [timcbarnes](https://github.com/timcbarnes)) 📖
+* **Tim Barnes** - [timcbarnes](https://github.com/timcbarnes) 📖
 
 ## Acknowledgments
 
-* This project was created by the fine folks at [TheOdinProject](https://github.com/TheOdinProject)
+* This project was originally created by the fine folks at [TheOdinProject](https://github.com/TheOdinProject)
 
 ## Contact
 
-If you want to contact me you can reach me at <tim.c.barnes@gmail.com>
+For questions feel free to reach out to <tim.c.barnes@gmail.com>
