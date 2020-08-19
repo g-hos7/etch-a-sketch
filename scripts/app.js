@@ -1,48 +1,85 @@
-const GRIDMIN = 10;
-const GRIDMAX = 100;
-const GRIDDEFAULT = 32;
+const CANVASMIN = 10;
+const CANVASMAX = 100;
+const CANVASDEFAULT = 32;
 
 const container = document.querySelector('.container');
 const resetBtn = document.querySelector('.reset');
+const resizeBtn = document.querySelector('.resize');
+const sizeDisplay = document.querySelector('.size');
+const pencilBtn = document.querySelector('.pencil');
+const eraserBtn = document.querySelector('.eraser');
 
-function getGridSize() {
-  let gridSize = parseInt(prompt('Choose a grid size between 10 and 100', GRIDDEFAULT));
-  if (Number.isNaN(gridSize)) {
-    return GRIDDEFAULT;
-  } else if (Number.isInteger(gridSize) && gridSize >= GRIDMIN && gridSize <= GRIDMAX) {
-    return gridSize;
-  } else {
-    alert("Please enter a number between 10 and 100!");
-    location.reload();
+function getCanvasSize() {
+  let validSelection = false;
+
+  while (!validSelection) {
+    let canvasSize = prompt('Choose a new size between 10 and 100', CANVASDEFAULT);
+    console.log(canvasSize);
+    if (canvasSize === null) {
+      return CANVASDEFAULT;
+    } else if (Number.isInteger(parseInt(canvasSize)) && parseInt(canvasSize) >= CANVASMIN && parseInt(canvasSize) <= CANVASMAX) {
+      validSelection = true;
+      return canvasSize;
+    } else {
+      alert("Please enter a whole number between 10 and 100!");
+      validSelection = false;
+    }
   }
 }
 
-function createGrid(size) {
+function createCanvas(size) {
   container.style.setProperty('--grid-rows', size);
   container.style.setProperty('--grid-columns', size);
-  populateGrid(size);
-  resetPage();
-
+  populateCanvas(size);
+  sizeDisplay.textContent = `This Canvas is ${size} x ${size}`;
 }
 
-function populateGrid(size) {
+function clearCanvas() {
+  let cells = document.querySelectorAll('.cell');
+  cells.forEach(cell => {
+    cell.style.background = 'rgb(255, 255, 255)';
+    container.appendChild(cell).className = 'cell'
+  });
+}
+
+function populateCanvas(size) {
   for (i = 0; i < (size * size); i++) {
     let cell = document.createElement('div');
     container.appendChild(cell).className = 'cell';
-    draw(cell);
+    pencilBtn.addEventListener('click', () => {
+      drawBlack(cell);
+    });
+    eraserBtn.addEventListener('click', () => {
+      drawEraser(cell);
+    });
   }
 }
 
-function draw(cell) {
+function drawBlack(cell) {
   cell.addEventListener('mouseenter', () => {
-    cell.style.background = 'rgba(0, 0, 0, 0.100)';
+    cell.style.background = 'rgb(0, 0, 0)';
   });
 }
 
-function resetPage() {
+function drawEraser(cell) {
+  cell.addEventListener('mouseenter', () => {
+    cell.style.background = 'rgb(255, 255, 255)';
+  });
+}
+
+function resetCanvas() {
   resetBtn.addEventListener('click', () => {
-    location.reload();
+    clearCanvas();
   });
 }
 
-createGrid(getGridSize());
+function resizeCanvas() {
+  resizeBtn.addEventListener('click', () => {
+    clearCanvas();
+    createCanvas(getCanvasSize());
+  });
+}
+
+createCanvas(CANVASDEFAULT);
+resetCanvas();
+resizeCanvas();

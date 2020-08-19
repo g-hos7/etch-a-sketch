@@ -19,11 +19,19 @@ body {
   justify-content: center;
 }
 
+.buttons, button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1em;
+}
+
 .reset {
   margin-bottom: 2em;
-  width: 5em;
+  margin-left: 0.5em;
+  width: 8em;
   height: 2em;
-  font-size: 1.3em;
   background: white;
   border-radius: 0.4em;
 }
@@ -33,6 +41,62 @@ body {
   color: white;
 }
 
+.reset:focus {
+  outline: none;
+}
+
+.resize {
+  margin-bottom: 2em;
+  margin-left: 0.5em;
+  width: 8em;
+  height: 2em;
+  background: white;
+  border-radius: 0.4em;
+}
+
+.resize:hover {
+  background: black;
+  color: white;
+}
+
+.resize:focus {
+  outline: none;
+}
+
+.pencil {
+  margin-bottom: 2em;
+  margin-left: 0.5em;
+  width: 8em;
+  height: 2em;
+  background: white;
+  border-radius: 0.4em;
+}
+
+.pencil:hover, .pencil:focus {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+.eraser {
+  margin-bottom: 2em;
+  margin-left: 0.5em;
+  width: 8em;
+  height: 2em;
+  background: white;
+  border-radius: 0.4em;
+}
+
+.eraser:hover, .eraser:focus {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+.size {
+  font-size: 1.2em;
+  margin-bottom: 0.2em;
+}
 .container {
   display: grid;
   padding: 0.2em;
